@@ -80,6 +80,7 @@ This is intentionally expensive. First run `configs/smoke.toml`. For the full sw
 Install Python 3.11 or later and the project dependencies:
 
 ```powershell
+Set-Location Hypergraph
 python -m venv .venv
 .venv\Scripts\pip install -e ".[dev]"
 ```
