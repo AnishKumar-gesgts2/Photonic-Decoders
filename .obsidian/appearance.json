@@ -1,4 +1,6 @@
 {
   "cssTheme": "Everforest",
-  "theme": "obsidian"
+  "theme": "obsidian",
+  "textFontFamily": "Bodoni 72 Smallcaps",
+  "baseFontSizeAction": true
 }
