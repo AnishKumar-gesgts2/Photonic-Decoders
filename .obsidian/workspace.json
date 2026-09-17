@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Photonic Decoder Evaluations.md",
+                "file": "Hypergraph/Fusion Hypergraph Decoder Test Plan.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Photonic Decoder Evaluations"
+              "title": "Fusion Hypergraph Decoder Test Plan"
             }
           }
         ]
@@ -190,19 +190,19 @@
   },
   "active": "488ac13817c48542",
   "lastOpenFiles": [
+    "Hypergraph/src/fusion_hypergraph_benchmark.egg-info/SOURCES.txt",
+    "Hypergraph/src/fusion_hypergraph_benchmark.egg-info/top_level.txt",
+    "Hypergraph/src/fusion_hypergraph_benchmark.egg-info/entry_points.txt",
+    "Hypergraph/src/fusion_hypergraph_benchmark.egg-info/requires.txt",
+    "Hypergraph/src/fusion_hypergraph_benchmark.egg-info/PKG-INFO",
+    "Hypergraph/src/fusion_hypergraph_benchmark.egg-info/dependency_links.txt",
+    "Hypergraph/src/fusion_hypergraph_benchmark.egg-info",
+    "Photonic Decoder Evaluations.md",
+    "Hypergraph/Fusion Hypergraph Decoder Test Plan.md",
     "Hypergraph/tests/test_physics.py",
     "Hypergraph/tests/test_lattice.py",
     "Hypergraph/tests/test_decoder.py",
     "Hypergraph/tests/test_analysis.py",
-    "Hypergraph/tests",
-    "Hypergraph/src/fusion_hypergraph/__init__.py",
-    "Hypergraph/src/fusion_hypergraph/plotting.py",
-    "Hypergraph/src/fusion_hypergraph/physics.py",
-    "Hypergraph/src/fusion_hypergraph/lattice.py",
-    "Hypergraph/src/fusion_hypergraph/data.py",
-    "Hypergraph/src/fusion_hypergraph/config.py",
-    "Hypergraph/Fusion Hypergraph Decoder Test Plan.md",
-    "Photonic Decoder Evaluations.md",
     "Photonic Decoder Evaluations 1.md"
   ]
 }
