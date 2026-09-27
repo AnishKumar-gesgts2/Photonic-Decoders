@@ -8,13 +8,13 @@
         "type": "tabs",
         "children": [
           {
-            "id": "488ac13817c48542",
+            "id": "2317ed3a18b2683a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Hypergraph/Fusion Hypergraph Decoder Test Plan.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -188,21 +188,35 @@
       "bases:Create new base": false
     }
   },
-  "active": "488ac13817c48542",
+  "active": "2317ed3a18b2683a",
   "lastOpenFiles": [
-    "Hypergraph/src/fusion_hypergraph_benchmark.egg-info/SOURCES.txt",
-    "Hypergraph/src/fusion_hypergraph_benchmark.egg-info/top_level.txt",
-    "Hypergraph/src/fusion_hypergraph_benchmark.egg-info/entry_points.txt",
-    "Hypergraph/src/fusion_hypergraph_benchmark.egg-info/requires.txt",
-    "Hypergraph/src/fusion_hypergraph_benchmark.egg-info/PKG-INFO",
-    "Hypergraph/src/fusion_hypergraph_benchmark.egg-info/dependency_links.txt",
-    "Hypergraph/src/fusion_hypergraph_benchmark.egg-info",
-    "Photonic Decoder Evaluations.md",
+    "Hypergraph/phase0/PAPER_SOURCE_CHANNEL_RESULTS.md",
+    "Hypergraph/phase0/__pycache__/test_paper_encoded_channel.cpython-311-pytest-9.1.1.pyc",
+    "Hypergraph/phase0/test_paper_encoded_channel.py",
+    "Hypergraph/outputs/phase0_paper_encoded_channel/results.json",
+    "Hypergraph/outputs/phase0_paper_encoded_channel",
+    "Hypergraph/phase0/__pycache__/run_paper_encoded_channel.cpython-311.pyc",
+    "Hypergraph/phase0/run_paper_encoded_channel.py",
+    "Hypergraph/phase0/__pycache__/test_paper_source_sensitivity.cpython-311-pytest-9.1.1.pyc",
+    "Hypergraph/phase0/test_paper_source_sensitivity.py",
+    "Hypergraph/outputs/phase0_paper_source_sensitivity/results.json",
+    "Hypergraph/outputs/phase0_paper_source_sensitivity",
+    "Hypergraph/phase0/PHYSICAL_CHANNEL_AUDIT.md",
+    "Hypergraph/phase0/IMPROVED_IDEA_GO_NO_GO.md",
+    "Hypergraph/phase0/BOUNDED_JOINT_LOGICAL_RESULTS.md",
+    "Hypergraph/phase0/ANCILLA_FREE_DECODER_PROXY_RESULTS.md",
+    "Hypergraph/phase0/ANCILLA_FREE_INFORMATION_RESULTS.md",
+    "Hypergraph/phase0/BOUNDED_OPTICAL_D3_RESULTS.md",
+    "Hypergraph/phase0/ENCODED_RESULTS.md",
+    "Hypergraph/phase0/RESULTS.md",
+    "Hypergraph/phase0/README.md",
+    "Hypergraph/phase0/NONCONCLUSIVE_RESULTS.md",
+    "Hypergraph/phase0/SIX_RING_OPTICAL_RESULTS.md",
+    "Hypergraph/phase0/NATIVE_GATES_RESULTS.md",
+    "Hypergraph/phase0/D3_SURFACE_PROXY_RESULTS.md",
+    "Hypergraph/Abstract.md",
     "Hypergraph/Fusion Hypergraph Decoder Test Plan.md",
-    "Hypergraph/tests/test_physics.py",
-    "Hypergraph/tests/test_lattice.py",
-    "Hypergraph/tests/test_decoder.py",
-    "Hypergraph/tests/test_analysis.py",
+    "Photonic Decoder Evaluations.md",
     "Photonic Decoder Evaluations 1.md"
   ]
 }
