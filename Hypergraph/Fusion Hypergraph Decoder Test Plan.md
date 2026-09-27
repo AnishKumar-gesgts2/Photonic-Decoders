@@ -325,6 +325,8 @@ Pause or stop if calibrated MWPM removes the gain, the trigger cannot distinguis
 
 ## Phase 0 — Small-scale go/no-go feasibility test
 
+> **GitHub Copilot attribution — 2026-09-26:** The Phase 0 diagnosis, hypothesis tests, literature-based cautions, and go/no-go criteria in this section were added or updated by GitHub Copilot.
+
 ### Purpose and boundary
 
 Phase 0 is a deliberately small falsification test. Before committing to the $d=5$ effective-channel study, it asks:
@@ -332,6 +334,38 @@ Phase 0 is a deliberately small falsification test. Before committing to the $d=
 > Do characterized ancilla-free and boosted encoded fusions admit a common-cause multi-detector action, and does **global or exact bounded hypergraph inference** improve logical recovery over equally informed matching on a bounded memory? A separate comparison asks how close the ancilla-free system comes to the boosted system at lower resource cost.
 
 An optical primitive or periodic check proxy alone does not test native FBQC, hardware, an asymptotic threshold, or a publication-level decoder advantage. The new architecture study requires a bounded memory with a declared logical observable. A validated hyperedge and an accuracy gain authorize studying a selective trigger; the $d=5$ transition additionally requires the full optical-action and bounded-memory gates described below. A negative result is reported for the tested mechanism and operating range, not silently redefined as a favorable parameter search.
+
+### GitHub Copilot diagnosis of the phase-0 null result — 2026-09-26
+
+> **Simple explanation:** a hypergraph can only beat MWPM when the experiment contains an observable, sufficiently frequent common-cause event that genuinely touches more than two QEC checks. If the simulated faults are mostly graphlike, the higher-order event is rare or erased, the score is dominated by forced failures, or MWPM receives the same useful metadata, both decoders should perform similarly. A null result therefore first tests whether the benchmark exposes the proposed mechanism; it does not by itself disprove hypergraph decoding.
+
+Technically, the relevant object is the calibrated joint channel
+
+$$
+P(D,L,A,R\mid c,\theta),
+$$
+
+not the label “hypergraph.” Here $D$ is detector support, $L$ is logical action, $A$ is the fusion-level action, $R$ is the observable record, and $c$ is a simulator-only physical cause. Pairwise MWPM loses information only when the joint support and its probability are not determined by pairwise marginals, and when $R$ provides enough evidence to select that common cause. Configuration MAP can still lose to MWPM because the most likely fault assignment is not necessarily the most likely logical class; the primary score must therefore remain logical failure, with exact logical-class MAP as a small-instance reference.
+
+| ID | Hypothesis for no observed hypergraph improvement | Existing status | Phase-0 falsification test |
+|---|---|---|---|
+| H1 | The benchmark is a periodic surrogate or rotated surface-code adapter rather than a finite six-ring memory with boundaries and a logical membrane. | Supported | Build the bounded circuit, inject every candidate fusion action, and verify detector/logical signatures independently with Stim. |
+| H2 | The state-4/state-5 surrogate bursts or Pauli adapters are not the physical fusion actions being claimed. | Supported | Freeze one source/fusion model and compare its record-conditioned action supports and rates with the decoder's hyperedges. |
+| H3 | Weight-3/4 events are too rare to affect logical failures, despite a large *conditional* correlated fraction in the surrogate. | Plausible | Report event incidence per fusion and per logical shot; sweep incidence independently and compare with a matched-marginal independent control. |
+| H4 | Encoded reconstruction converts one physical fault into a joint event only for some branches and into a single-parity event or erasure for others. | Supported | Stratify full, partial, loss, and ambiguous records and report $P(\text{joint action}\mid R)$. |
+| H5 | Loss and unavailable checks dominate, so no decoder can recover information that was not measured. | Supported | Plot availability and forced-failure fractions separately; compare only on a predeclared measurable subset as well as overall. |
+| H6 | The calibrated channel is effectively graphlike after marginalization, so MWPM is already near-optimal. | Supported in several phase-0 cells | Compare joint decoding with a zero-joint matched-marginal control and an exact logical-class reference. |
+| H7 | The current MWPM comparison is not strong enough or not fair enough. | Supported | Add erasure-aware calibrated MWPM, belief matching, and the best correlated-matching/splitting control using the same records and channel. |
+| H8 | Loopy damped min-sum is failing to find the useful hypergraph solution. | Plausible | Compare objective value, syndrome consistency, and logical decisions against exact enumeration/ILP on small instances; report convergence rather than only failure rate. |
+| H9 | The outcome/PNR likelihood is a surrogate outer product and may be overconfident or physically wrong. | Supported | Replace it with a derived or measured table; report held-out log loss/calibration and outcome-only, PNR-only, and joint metadata arms. |
+| H10 | Periodic sectors, seam conventions, boundary fallbacks, or common forced failures mask decoder differences. | Supported for earlier proxy runs | Separate measurable and unmeasurable shots and validate every injected support/action pair before scoring. |
+| H11 | The apparent result is statistically unresolved because low-rate cells have too few logical failures. | Plausible | Use identical paired shots, Wilson intervals, paired bootstrap intervals, and a predeclared minimum precision or failure count. |
+| H12 | Accepted extra-photon records are coherent, so projecting their diagonal Bell weights into a stochastic Pauli hyperedge invents the correlation. | Supported by the optical audit | Preserve the full record-conditioned instrument or justify a physical twirl; track unsupported coherent probability mass explicitly. |
+| H13 | Metadata improves MWPM as much as the hypergraph, so the gain is information gain rather than decoder-specific gain. | Supported in proxy evidence | Compare identical no-metadata, outcome-only, PNR-only, redundancy-only, and joint-record arms; report the BP-minus-MWPM interaction. |
+
+These hypotheses agree with the literature. Bartolucci et al. describe the six-ring FBQC syndrome graphs in which ordinary fusion outcomes are graph edges and standard MWPM is a valid baseline ([Nature Communications 14, 912 (2023)](https://pmc.ncbi.nlm.nih.gov/articles/PMC9938229/)). Delfosse et al. explain that MWPM applies directly to faults triggering at most two checks and requires splitting heuristics for larger hypergraph faults ([arXiv:2309.15354](https://arxiv.org/abs/2309.15354)); they also caution that short cycles can make unmodified BP unreliable. Gupta et al. provide source-error formulas and a characterization route ([arXiv:2608.03005](https://arxiv.org/abs/2608.03005)), but not measured parameters for this source or a native finite logical memory. These papers support the tests above, not a prediction that the current surrogate must show an advantage.
+
+**Phase-0 advancement gate:** proceed to the full-scale phases only if the finite FBQC detector/logical map is validated; the physical or independently justified channel is normalized and record-conditioned, including loss, partial outcomes, and unsupported coherent mass; a deliberately nonzero common-cause control beats calibrated MWPM and belief matching while the matched-marginal control does not; the approximate solver agrees with exact small-instance logical-class decoding; the gain survives equal metadata and a strong correlated-matching/splitting baseline; and a paired 95% interval excludes zero across the predeclared primary setting plus at least one held-out hardware/calibration shift. Otherwise, record a no-go or redesign decision for the tested mechanism and do not advance to the expensive $d=5$ or FPGA phases.
 
 ### Minimal scope
 
