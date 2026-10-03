@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Hypergraph/Fusion Hypergraph Decoder Test Plan.md",
-                "mode": "source",
+                "file": "GBS Classical Simulation/Correlation-Based Classical Simulation of GBS.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Fusion Hypergraph Decoder Test Plan"
+              "title": "Correlation-Based Classical Simulation of GBS"
             }
           }
         ]
@@ -188,8 +188,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "f505a31e0d89be89",
+  "active": "2317ed3a18b2683a",
   "lastOpenFiles": [
+    "Hypergraph/Fusion Hypergraph Decoder Test Plan.md",
     "Quantum Research.md",
     "Prior Decoder Concepts/HybridMCMC-CRW/Hybrid Monte Carlo-Randomness Decoders in Scalable Qubit Architecture.md",
     "Prior Decoder Concepts/HybridMCMC-CRW/Hybrid MCMC Correlated Random-Walk Decoder.md",
@@ -223,7 +224,6 @@
     "Hypergraph/phase0/NATIVE_GATES_RESULTS.md",
     "Hypergraph/phase0/D3_SURFACE_PROXY_RESULTS.md",
     "Hypergraph/Abstract.md",
-    "Hypergraph/Fusion Hypergraph Decoder Test Plan.md",
     "Photonic Decoder Evaluations.md",
     "Photonic Decoder Evaluations 1.md"
   ]
