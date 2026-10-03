@@ -1,6 +1,8 @@
 # Evaluating and Improving Correlation-Based Classical Simulations of Gaussian Boson Sampling in Quantum Photonics
 
-**Status:** research direction for a science-fair proposal; the exact algorithm, target experiment, and final claim are undecided. This note distinguishes established literature, preliminary local tests, and hypotheses. See [[Quantum Research]].
+**Status (October 2, 2026):** first small-system selective-correction benchmark completed. The method, 144-case suite, held-out results, and publication assessment are in [[First Research Draft]]. Jiuzhang 2.0 is the eventual threshold-click target, but calibrated experimental benchmarking and a scalable sampler remain uncompleted. This note preserves the original research rationale and preliminary evidence. See [[Quantum Research]].
+
+**Revised after skepticism audit:** The numerical result was independently confirmed, but the current implementation failed the stronger practical comparison: an optimized exact calculation achieved essentially zero error and was cheaper in most tested cases. [[Skeptical Audit and Stronger Benchmarks]] is the current assessment. Continue only as an information diagnostic or after redesigning the fitting/sampling architecture; do not treat the first draft's error reduction as a scalable algorithmic advance.
 
 For a fuller explanation with technical and plain-language sections, see [[GBS Classical Simulation Project Description]].
 
@@ -59,14 +61,19 @@ A synthetic fixed-click example also showed that a subsystem Bayesian score can 
 
 The science-fair proposal can commit to the small-system accuracy-versus-cost study and present the selective correction as the method to investigate. It should not promise a paper, a scalable classical breakthrough, or a reversal of an existing quantum-advantage claim. A publishable result would require a clear new method or robust finding beyond the known fact that low-order statistics are incomplete. BlueQubit Track 2 becomes a direct fit only if the work produces a credible classical competitor to an experimental advantage baseline; the benchmark study is the foundation for that possibility.
 
-## Open decisions
+## Completed first study and remaining decisions
 
-- Which specific GBS experiment and published classical algorithm will be the main comparison?
-- Which higher-order subsets can be selected cheaply **without** looking at held-out exact answers?
-- What accuracy threshold is required for the intended experimental comparison, and which validation scores are available at that scale?
-- Does the correction outperform the simple option of spending the same resources on a higher uniform truncation order?
+The completed first study used 36 development and 108 held-out synthetic 6-, 8-, and 10-mode GBS instances. Selected triple corrections reduced mean full TVD from 0.10575 for pairwise fitting to 0.06641, compared with 0.08157 for budget-matched random selection and 0.05269 for all-triple fitting. Selection retained 74.1% of the aggregate uniform-triple improvement, with approximately 60% of the uniform method's preprocessing time and 70% of its traced allocation peak by median within-instance ratios. Every residual-selected held-out fit passed the declared numerical gate. The full study retains the printed TAP approximation's unsupported cases and three abnormal optimizer terminations in other models.
+
+The algorithm fits an exactly normalized exponential-family distribution and samples its enumerated table. This is a completed bounded benchmark, not a scalable simulation breakthrough. Full results, computing-cost audit, metric-ranking reversals, all predeclared cells, and reproduction instructions are linked from [[First Research Draft]]. The original proposals above describe the broader program; remaining decisions are:
+
+- Which practical architecture can fit and sample selected correlations without full outcome enumeration?
+- Does the frozen rule transfer to new circuit structures, larger sizes, and richer noise models?
+- Can it beat a faithful strong published baseline at matched accuracy and measured computing cost?
+- Does the final contribution support an algorithm paper or a substantive benchmarking/validation paper after a completed novelty audit?
 
 ## Related notes
 
 - [[Quantum Research]]
 - [[GBS Classical Simulation Project Description]]
+- [[First Research Draft]]

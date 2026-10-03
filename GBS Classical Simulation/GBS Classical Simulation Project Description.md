@@ -1,16 +1,18 @@
 # Evaluating and Improving Correlation-Based Classical Simulations of Gaussian Boson Sampling in Quantum Photonics
 
-**Status (October 1, 2026):** Proposed research program. A small diagnostic prototype has been run; no selective-correction algorithm or large-experiment result has yet been demonstrated. The precise target sampler and final contribution remain open.
+**Status (October 2, 2026):** First selective-correction study completed on 144 synthetic 6-, 8-, and 10-mode instances, including 108 held-out cases. A residual-based selection rule reduced mean full-distribution TVD by 37.2% relative to pairwise maximum-entropy fitting, but was less accurate than uniform third-order fitting in every held-out case. The architecture still enumerates all bit strings; scalable sampling and experimental benchmarking remain open. See [[First Research Draft]] for the full result, measured costs, failures, and publication assessment.
+
+**Skeptical audit update:** Independent Torontonian calculations confirmed the reference probabilities, but a stronger omitted exact baseline strictly outperformed the selected approximation on error, preprocessing time, and traced memory in 102 of 108 cases. The current enumerated implementation is therefore a **no-go as a computational improvement** on this grid. The 37.2% error reduction remains an information-allocation finding, not evidence of a cheaper practical simulator. [[Skeptical Audit and Stronger Benchmarks]] supersedes the first draft's performance interpretation and records stronger controls, repeated random trials, and matched timing measurements.
 
 **Research area:** quantum information science, quantum photonics, classical simulation, and statistical validation of sampling experiments.
 
 **One-sentence objective:** Determine which information about a Gaussian boson sampling output distribution is worth computing under a limited classical budget, and use that answer to improve the accuracy–cost tradeoff of classical simulation.
 
-This is the full project description. [[Correlation-Based Classical Simulation of GBS]] contains the shorter research plan and initial evidence. [[Quantum Research]] is the vault index.
+This is the full project description. [[Correlation-Based Classical Simulation of GBS]] contains the shorter research plan and initial evidence. [[First Research Draft]] records the completed first selective study. [[Quantum Research]] is the vault index.
 
 ## Grant-facing summary
 
-Classical simulation is central to assessing the computational claims of Gaussian boson sampling experiments, but accuracy becomes difficult to verify as the output space grows. Existing approximate methods use tractable summaries of a photonic system, including low-order detector correlations or compressed state representations. This project asks how the information chosen for simulation affects the accuracy–cost tradeoff. I will first quantify the relationship between accessible validation statistics and full-distribution error on small GBS instances with exact answers. I will then investigate whether a budgeted selection of higher-order dependencies can improve a classical sampler more efficiently than a uniform increase in approximation order. The outcome will be evaluated against named baselines on held-out instances, with runtime and memory measured alongside accuracy. Scaling to experimental benchmarks is a later, evidence-dependent stage.
+Classical simulation is central to assessing the computational claims of Gaussian boson sampling experiments, but accuracy becomes difficult to verify as the output space grows. Existing approximate methods use tractable summaries of a photonic system, including low-order detector correlations or compressed state representations. This project asks how the information chosen for simulation affects the accuracy–cost tradeoff. A first held-out study found that selecting one quarter of triple dependencies retained 74.1% of the aggregate TVD improvement obtained by adding all triples, with lower measured preprocessing time and traced allocation. This result is bounded to exact small-system fitting, which still requires enumeration of the output space. The next stage will test whether selection can improve a practical sampler under matched accuracy and resource limits. Scaling to experimental benchmarks remains evidence-dependent.
 
 ## 1. The system and the computational task
 
@@ -54,7 +56,7 @@ The improvement $\Delta_S$ must be weighed against the extra preprocessing time,
 2. Build a baseline classical sampler using a tractable approximation, initially an independent or pairwise model. Compare later with a faithfully implemented published method if its code and computational needs permit.
 3. Generate a limited list of candidate higher-order detector groups. Potential shortlist rules include optical connectivity, strong pairwise dependence, or low-dimensional marginal discrepancies. The shortlist must be cheap enough that searching it does not erase the proposed speed benefit.
 4. Calculate exact *small-subsystem* statistics for shortlisted groups from the Gaussian covariance description where feasible. Use these to estimate which corrections are likely to matter. Do **not** use the held-out full distribution to choose corrections on evaluation instances.
-5. Add the selected information through a sampling rule that remains a normalized, nonnegative probability distribution. An exponential-family factor model or a normalized sequential conditional sampler are possible architectures. The final architecture will be chosen after comparing their sampling and fitting costs; neither has yet been implemented as the proposed improvement.
+5. Add the selected information through a sampling rule that remains a normalized, nonnegative probability distribution. The first study implemented an exponential-family factor model with an enumerated partition function and independent table sampling. A practical larger-system architecture still needs to be chosen and tested; a normalized sequential conditional sampler or a factor model with validated approximate fitting/sampling remains a possibility.
 6. Stop when the computational budget is reached. Compare against the uncorrected baseline and a uniform increase in correlation order using matched resource limits.
 
 An example ranking statistic is predicted reduction in validation error divided by added runtime or memory. The *prediction rule* should be developed on training instances and then frozen before held-out evaluation. On small held-out instances, the exact full distribution is used only to measure the final outcome. At larger scales, where full TVD cannot be computed, evaluation must use multiple independently chosen diagnostics rather than treating any one score as proof of full-distribution accuracy.
@@ -115,11 +117,17 @@ The main success criterion is a **Pareto improvement**: across held-out physical
 
 ## 9. Next decisions and near-term work
 
-1. Select one primary GBS experiment and one published classical baseline, including a precise detector model and comparison metric.
-2. Specify two candidate shortlisting rules and one normalized correction architecture; estimate their preprocessing and sampling costs before implementation.
-3. Expand the exact-instance suite beyond the initial nine eight-mode cases and lock a held-out test set.
-4. Implement the simplest selective correction and compare it with the same-budget uniform-order alternative.
-5. Revise the grant claim according to the measured result. Do not claim large-scale advantage reversal from small-system TVD alone.
+The first draft has completed the initial bounded version of these steps. Jiuzhang 2.0 is the eventual threshold-detector target; the first published comparison is the stationary model from Villalonga et al.'s printed TAP equations, enumerated at small scale rather than reproducing their Gibbs runtime. Pair-ranked and residual-ranked triple selection were compared with random selection at the same feature/query budgets, uniform third-order fitting, and uncorrected models. The locked grid contains 36 development and 108 held-out instances; measured runtime, isolated traced memory, and all unfavorable cases are retained in [[First Research Draft]].
+
+The selective method reduced mean TVD from 0.10575 to 0.06641. Uniform third-order fitting reached 0.05269. Selection therefore establishes an intermediate accuracy–cost tradeoff, not a strict improvement over both baseline endpoints or a better large-system published sampler. The initial implementation cannot scale because it enumerates $2^M$ outcomes.
+
+The next work is:
+
+1. Complete the novelty/code audit and reproduce a strong published sampler, with calibrated experimental data identified separately from synthetic cases.
+2. Replace enumeration with a practical normalized fitting and sampling architecture, checking sampling reliability and including selection overhead.
+3. Freeze a second suite spanning new circuit structures and noise models, with multiple feature budgets and independent training/evaluation.
+4. Compare at declared accuracy thresholds and matched measured time/memory, retaining failures and unsupported cases.
+5. Extend to experimental subsystems and published validation tests only after the practical sampler passes; revise the paper claim to match the evidence.
 
 The first decision may change the final title, algorithm, or target system. The stable objective is to improve the accuracy–cost tradeoff of classical simulation through measured, selective use of information.
 
